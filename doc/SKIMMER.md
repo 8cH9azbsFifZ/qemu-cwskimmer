@@ -20,16 +20,6 @@ LOGIFLE_AGGREGATOR=/root/AggregatorLog.txt
 
 
 
-## Configuration
-QTH=KA12aa
-NAME="Mr. X"
-SQUARE=KA12aa
-
-V_HERMES=21.7.18
-V_SKIMMER=2.1
-V_SKIMMERSRV=1.6
-V_RBNAGGREGATOR=6.3
-
 
 # Startup
 # FIXME - alterantive?
