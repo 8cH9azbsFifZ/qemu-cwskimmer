@@ -1,6 +1,8 @@
 
 # CW Skimmer installation
 
+winetricks -q dotnet46
+
 
 # Configuration stuff
 PATH_INI_SKIMSRV="/root/prefix32/drive_c/users/root/Application Data/Afreet/Products/SkimSrv"
@@ -72,3 +74,31 @@ touch $LOGIFLE_AGGREGATOR
 
 
 /usr/bin/supervisord
+
+
+git clone https://github.com/8cH9azbsFifZ/qemu-cwskimmer.git
+
+
+apt-get install tightvncserver
+
+ .vnc/xstartup:
+
+
+ /etc/init.d/vncserver
+
+
+chmod +x /etc/init.d/vncserver
+
+update-rc.d vncserver defaults
+
+vncserver -kill :1
+touch ~/.Xresources
+vncserver :1
+tail -f /root/.vnc/bustervm:1.log
+
+
+/root/novnc/utils/launch.sh --vnc localhost:5901 --listen 8080 &
+
+DISPLAY=:1 /usr/bin/wine /skimmer_2.1/Setup.exe /SILENT
+DISPLAY=:1 /usr/bin/wine /skimmersrv_1.6/app/SkimSrv.exe &
+DISPLAY=:1 /usr/bin/wine "/rbnaggregator_6.3/Aggregator v6.3.exe" &
