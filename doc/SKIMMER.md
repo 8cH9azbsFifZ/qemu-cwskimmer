@@ -23,8 +23,14 @@ QTH=KA12aa
 NAME="Mr. X"
 SQUARE=KA12aa
 
-# Startup
+V_HERMES=21.7.18
+V_SKIMMER=2.1
+V_SKIMMERSRV=1.6
+V_RBNAGGREGATOR=6.3
 
+
+# Startup
+# FIXME - alterantive?
 echo "Configure Skimmer with Callsign: $CALLSIGN, QTH: $QTH, Name: $NAME, Grid: $SQUARE using $PATH_INI_SKIMSRV"
 sed -i 's/Call=/Call='$CALLSIGN'/g' "$PATH_INI_SKIMSRV"/SkimSrv.ini
 sed -i 's/QTH=/QTH='$QTH'/g' "$PATH_INI_SKIMSRV"/SkimSrv.ini
@@ -41,7 +47,7 @@ sed -i 's/CW0SKIM/'$CALLSIGN'/g' "$PATH_INI_AGGREGATOR"/Aggregator.ini
 cp "$PATH_INI_AGGREGATOR"/Aggregator.ini /root/
 chmod oag-r "$PATH_INI_AGGREGATOR"/Aggregator.ini
 
-
+IP_HERMES=127.0.0.1
 echo "Configure Hermes DLL for ${IP_HERMES}"
 cp /HermesDLL_${V_HERMES}/HermesIntf.dll /skimmersrv_${V_SKIMMERSRV}/app/HermesIntf_${IP_HERMES}.dll
 
