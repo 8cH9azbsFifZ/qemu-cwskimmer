@@ -1,3 +1,5 @@
+# Install qemu on host
+apt-get -y install qemu-system-x86 
 
 # Setup a bridge on host
 apt install bridge-utils
@@ -12,7 +14,7 @@ iface br0 inet dhcp
     bridge_ports enp0s25
 eof
 
-# Starten mit der Bridge
+# Start with bridge on host
 qemu-system-x86_64 -cpu host -hda debian.qcow -m 512 -nographic -enable-kvm -nic bridge
 
 
